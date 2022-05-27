@@ -1,9 +1,15 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <nav>
-      <button className="text-bold text-sky-600 underline">drafts</button>
+      <Link to="/drafts" className="text-bold text-sky-600 underline">
+        drafts
+      </Link>
       <span> </span>
-      <button className="text-bold text-sky-600 underline">prompts</button>
+      <Link to="/prompts" className="text-bold text-sky-600 underline">
+        prompts
+      </Link>
     </nav>
   );
 };
