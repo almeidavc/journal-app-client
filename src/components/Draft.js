@@ -30,9 +30,24 @@ const Draft = () => {
     try {
       e.preventDefault();
 
-      const response = fetch("http://localhost:3000/prompts", {
+      // create prompt
+      const response = await fetch("http://localhost:3000/prompts", {
         method: "POST",
-        headers: { ContentType: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+      const responseBody = await response.json();
+      const prompt_used = responseBody.id;
+
+      // create draft
+      await fetch("http://localhost:3000/drafts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title,
+          prompt_used,
+          body,
+        }),
       });
     } catch (err) {
       console.log(err);
@@ -40,7 +55,7 @@ const Draft = () => {
   };
 
   return (
-    <form className="grow flex flex-col">
+    <form className="grow flex flex-col" onSubmit={handleSubmit}>
       <DraftTitle title={title} onTitleChange={handleTitleChange}></DraftTitle>
       <DraftPrompt
         prompt={prompt}
@@ -51,6 +66,7 @@ const Draft = () => {
         body={body}
         onBodyChange={handleBodyChange}
       ></DraftBody>
+      <button className="hover:text-neutral-600 hover:font-bold">save</button>
     </form>
   );
 };
