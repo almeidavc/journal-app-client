@@ -55,7 +55,7 @@ const Draft = () => {
   };
 
   return (
-    <form className="grow flex flex-col" onSubmit={handleSubmit}>
+    <form className="grow flex flex-col my-8" onSubmit={handleSubmit}>
       <DraftTitle title={title} onTitleChange={handleTitleChange}></DraftTitle>
       <DraftPrompt
         prompt={prompt}
