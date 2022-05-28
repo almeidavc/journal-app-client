@@ -26,7 +26,7 @@ const DraftTableRow = (props) => {
       </td>
       <td>{`id:${draftId}`}</td>
       <td>
-        <button
+        <a
           className="focus:outline-none
                 focus:text-red-600
                 hover:text-red-600
@@ -35,7 +35,7 @@ const DraftTableRow = (props) => {
           onClick={handleClickDelete}
         >
           x
-        </button>
+        </a>
       </td>
     </tr>
   );
