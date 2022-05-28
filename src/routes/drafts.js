@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import DraftTableRow from "../components/Drafts/DraftTableRow";
 
 function Drafts() {
   useEffect(() => {
@@ -18,21 +18,20 @@ function Drafts() {
     }
   };
 
+  const handleDraftDelete = (draftId) => {
+    setDrafts(drafts.filter((draft) => draft.id != draftId));
+  };
+
   return (
     <table className="grow my-8 flex flex-col">
       <tbody>
         {drafts.map((draft) => (
-          <tr key={draft.id} className="flex justify-between">
-            <td className="min-w-0 basis-3/4">
-              <Link
-                to={`/drafts/${draft.id}`}
-                className="break-all text-left hover:text-neutral-600 hover:font-bold focus:outline-none focus:text-neutral-600 focus:font-bold"
-              >
-                {draft.title}
-              </Link>
-            </td>
-            <td>{`id:${draft.id}`}</td>
-          </tr>
+          <DraftTableRow
+            key={draft.id}
+            draftId={draft.id}
+            draftTitle={draft.title}
+            onDraftDelete={handleDraftDelete}
+          ></DraftTableRow>
         ))}
       </tbody>
     </table>
