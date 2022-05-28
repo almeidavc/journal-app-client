@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const DraftPrompt = (props) => {
   return (
     <input

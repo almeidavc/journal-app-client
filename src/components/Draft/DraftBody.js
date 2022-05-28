@@ -1,4 +1,4 @@
-import { useState, forwardRef } from "react";
+import { forwardRef } from "react";
 
 const DraftBody = forwardRef((props, ref) => {
   return (

@@ -3,7 +3,7 @@ import DraftTitle from "./DraftTitle";
 import DraftPrompt from "./DraftPrompt";
 import DraftBody from "./DraftBody";
 
-const Draft = () => {
+const DraftAdd = () => {
   const draftBodyRef = useRef(null);
 
   useEffect(() => {
@@ -66,9 +66,11 @@ const Draft = () => {
         body={body}
         onBodyChange={handleBodyChange}
       ></DraftBody>
-      <button className="hover:text-neutral-600 hover:font-bold">save</button>
+      <button className="mt-12 hover:text-neutral-600 hover:font-bold focus:outline-none focus:text-neutral-600 focus:font-bold">
+        save
+      </button>
     </form>
   );
 };
 
-export default Draft;
+export default DraftAdd;
