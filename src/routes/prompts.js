@@ -1,5 +1,5 @@
 function Prompts() {
-  return <h1>prompts</h1>;
+  return <div></div>;
 }
 
 export default Prompts;
