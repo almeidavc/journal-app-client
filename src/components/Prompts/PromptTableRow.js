@@ -3,10 +3,18 @@ const PromptTableRow = (props) => {
 
   const handleClickDelete = async () => {
     try {
-      await fetch(`http://localhost:3000/prompts/${promptId}`, {
-        method: "DELETE",
-      });
-      props.onPromptDelete(promptId);
+      const response = await fetch(
+        `http://localhost:3000/prompts/${promptId}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const responseBody = await response.json();
+      if (responseBody.success) {
+        props.onPromptDelete(promptId);
+      } else {
+        alert(responseBody.error);
+      }
     } catch (err) {
       console.log(err);
     }
