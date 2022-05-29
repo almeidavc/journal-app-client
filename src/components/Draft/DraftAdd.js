@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Button from "../Button";
 import DraftTitle from "./DraftTitle";
 import DraftPrompt from "./DraftPrompt";
 import DraftBody from "./DraftBody";
@@ -89,9 +90,7 @@ const DraftAdd = () => {
         body={body}
         onBodyChange={handleBodyChange}
       ></DraftBody>
-      <button className="mt-12 hover:text-neutral-600 hover:font-bold focus:outline-none focus:text-neutral-600 focus:font-bold">
-        save
-      </button>
+      <Button>save</Button>
     </form>
   );
 };

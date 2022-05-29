@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
+import Button from "../Button";
 import DraftTitle from "./DraftTitle";
 import DraftPromptStatic from "./DraftPromptStatic";
 import DraftBody from "./DraftBody";
@@ -75,9 +76,7 @@ const DraftEdit = () => {
         body={body}
         onBodyChange={handleBodyChange}
       ></DraftBody>
-      <button className="mt-12 hover:text-neutral-600 hover:font-bold focus:outline-none focus:text-neutral-600 focus:font-bold">
-        edit
-      </button>
+      <Button>edit</Button>
     </form>
   );
 };
