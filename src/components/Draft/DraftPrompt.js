@@ -1,24 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const DraftPrompt = (props) => {
-  const { prompt, onPromptChange } = props;
+  const { allPrompts, prompt, onPromptChange } = props;
 
-  const [prompts, setPrompts] = useState([]);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    fetchPrompts();
-  }, []);
-
-  const fetchPrompts = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/prompts");
-      const responseBody = await response.json();
-      setPrompts(responseBody);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const DropdownMenu = (props) => {
     const { items } = props;
@@ -48,7 +33,7 @@ const DraftPrompt = (props) => {
       />
       {open && (
         <DropdownMenu
-          items={prompts.filter((p) => p.body.startsWith(prompt))}
+          items={allPrompts.filter((p) => p.body.startsWith(prompt))}
         />
       )}
     </div>

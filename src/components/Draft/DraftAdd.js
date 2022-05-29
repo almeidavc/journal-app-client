@@ -8,8 +8,20 @@ const DraftAdd = () => {
 
   useEffect(() => {
     draftBodyRef.current.focus();
+    fetchPrompts();
   }, []);
 
+  const fetchPrompts = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/prompts");
+      const responseBody = await response.json();
+      setPrompts(responseBody);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const [prompts, setPrompts] = useState([]);
   const [title, setTitle] = useState("Untitled");
   const [prompt, setPrompt] = useState("");
   const [body, setBody] = useState("");
@@ -30,14 +42,23 @@ const DraftAdd = () => {
     try {
       e.preventDefault();
 
-      // create prompt
-      const response = await fetch("http://localhost:3000/prompts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
-      const responseBody = await response.json();
-      const prompt_used = responseBody.id;
+      // create prompt if it's not an empty string
+      let prompt_used = null;
+      if (prompt) {
+        // check if it already exists
+        const promptUsed = prompts.find((p) => p.body === prompt);
+        if (promptUsed) {
+          prompt_used = promptUsed.id;
+        } else {
+          const response = await fetch("http://localhost:3000/prompts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt }),
+          });
+          const responseBody = await response.json();
+          prompt_used = responseBody.id;
+        }
+      }
 
       // create draft
       await fetch("http://localhost:3000/drafts", {
@@ -49,6 +70,7 @@ const DraftAdd = () => {
           body,
         }),
       });
+      window.location = "/";
     } catch (err) {
       console.log(err);
     }
@@ -58,6 +80,7 @@ const DraftAdd = () => {
     <form className="grow flex flex-col my-8" onSubmit={handleSubmit}>
       <DraftTitle title={title} onTitleChange={handleTitleChange}></DraftTitle>
       <DraftPrompt
+        allPrompts={prompts}
         prompt={prompt}
         onPromptChange={handlePromptChange}
       ></DraftPrompt>

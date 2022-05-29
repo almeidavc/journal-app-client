@@ -19,7 +19,7 @@ function Prompts() {
   };
 
   const handlePromptDelete = (promptId) => {
-    setPrompts(prompts.filter((prompt) => prompt.id != promptId));
+    setPrompts(prompts.filter((prompt) => prompt.id !== promptId));
   };
 
   return (

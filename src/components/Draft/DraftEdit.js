@@ -25,14 +25,15 @@ const DraftEdit = () => {
       const response = await fetch(`http://localhost:3000/drafts/${draftId}`);
       const responseBody = await response.json();
 
-      // fetch prompt used
-      const responsePrompt = await fetch(
-        `http://localhost:3000/prompts/${responseBody.prompt_used}`
-      );
-      const responseBodyPrompt = await responsePrompt.json();
-
+      // fetch prompt used if it exists
+      if (responseBody.prompt_used) {
+        const responsePrompt = await fetch(
+          `http://localhost:3000/prompts/${responseBody.prompt_used}`
+        );
+        const responseBodyPrompt = await responsePrompt.json();
+        setPrompt(responseBodyPrompt.body);
+      }
       setTitle(responseBody.title);
-      setPrompt(responseBodyPrompt.body);
       setBody(responseBody.body);
     } catch (err) {
       console.log(err);
@@ -41,10 +42,6 @@ const DraftEdit = () => {
 
   const handleTitleChange = (title) => {
     setTitle(title);
-  };
-
-  const handlePromptChange = (prompt) => {
-    setPrompt(prompt);
   };
 
   const handleBodyChange = (body) => {
