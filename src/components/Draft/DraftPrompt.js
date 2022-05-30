@@ -11,8 +11,16 @@ const DraftPrompt = (props) => {
     return (
       <ul className="flex flex-col divide-y absolute top-10 rounded-md bg-neutral-100 w-full max-h-40 overflow-auto">
         {items.map((item) => (
-          <li key={item.id} className="py-1.5 px-2">
-            <a onMouseDown={(e) => onPromptChange(item.body)}>{item.body}</a>
+          <li
+            key={item.id}
+            className="py-1.5 px-2 hover:bg-neutral-200 focus:bg-neutral-200"
+          >
+            <a
+              onMouseDown={(e) => onPromptChange(item.body)}
+              className="hover:text-neutral-600 hover:font-bold focus:text-neutral-600 focus:font-bold"
+            >
+              {item.body}
+            </a>
           </li>
         ))}
       </ul>
