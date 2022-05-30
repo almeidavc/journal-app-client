@@ -24,7 +24,7 @@ const DraftPrompt = (props) => {
       <input
         type="text"
         placeholder="choose a prompt or write down a new one..."
-        className="my-2 w-full focus:outline-none"
+        className="my-2 w-full"
         value={prompt}
         onChange={(e) => onPromptChange(e.target.value)}
         // if focused show possible completions

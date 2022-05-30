@@ -21,16 +21,12 @@ const PromptTableRow = (props) => {
   };
 
   return (
-    <tr className="flex justify-between">
+    <tr className="flex justify-between py-1.5">
       <td className="min-w-0 basis-3/4">{promptBody}</td>
       <td>{`id:${promptId}`}</td>
       <td>
         <a
-          className="focus:outline-none
-                focus:text-red-600
-                hover:text-red-600
-                focus:font-bold
-                hover:font-bold"
+          className="focus:text-red-600 hover:text-red-600 focus:font-bold hover:font-bold"
           onClick={handleClickDelete}
         >
           x

@@ -24,7 +24,7 @@ function Drafts() {
 
   return (
     <table className="grow my-8 flex flex-col">
-      <tbody>
+      <tbody className="divide-y">
         {drafts.map((draft) => (
           <DraftTableRow
             key={draft.id}

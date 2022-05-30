@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import PromptTableRow from "../components/Prompts/PromptTableRow";
+import AddPrompt from "../components/Prompts/AddPrompt";
 
 function Prompts() {
   useEffect(() => {
@@ -22,19 +23,26 @@ function Prompts() {
     setPrompts(prompts.filter((prompt) => prompt.id !== promptId));
   };
 
+  const handlePromptAdd = (prompt) => {
+    setPrompts(prompts.concat([prompt]));
+  };
+
   return (
-    <table className="grow my-8 flex flex-col">
-      <tbody>
-        {prompts.map((prompt) => (
-          <PromptTableRow
-            key={prompt.id}
-            promptId={prompt.id}
-            promptBody={prompt.body}
-            onPromptDelete={handlePromptDelete}
-          ></PromptTableRow>
-        ))}
-      </tbody>
-    </table>
+    <div>
+      <table className="grow my-8 flex flex-col">
+        <tbody className="divide-y">
+          {prompts.map((prompt) => (
+            <PromptTableRow
+              key={prompt.id}
+              promptId={prompt.id}
+              promptBody={prompt.body}
+              onPromptDelete={handlePromptDelete}
+            ></PromptTableRow>
+          ))}
+        </tbody>
+      </table>
+      <AddPrompt allPrompts={prompts} onPromptAdd={handlePromptAdd}></AddPrompt>
+    </div>
   );
 }
 

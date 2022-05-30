@@ -5,3 +5,13 @@
 body {
   @apply font-mono;
 }
+
+input,
+textarea,
+button {
+  @apply focus:outline-none hover:outline-none;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}

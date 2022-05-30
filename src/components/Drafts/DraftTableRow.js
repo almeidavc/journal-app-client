@@ -15,11 +15,11 @@ const DraftTableRow = (props) => {
   };
 
   return (
-    <tr className="flex justify-between">
+    <tr className="flex justify-between py-1.5">
       <td className="min-w-0 basis-3/4">
         <Link
           to={`/drafts/${draftId}`}
-          className="break-all text-left hover:text-neutral-600 hover:font-bold focus:outline-none focus:text-neutral-600 focus:font-bold"
+          className="break-all text-left hover:text-neutral-600 hover:font-bold focus:text-neutral-600 focus:font-bold"
         >
           {draftTitle}
         </Link>
@@ -27,11 +27,7 @@ const DraftTableRow = (props) => {
       <td>{`id:${draftId}`}</td>
       <td>
         <a
-          className="focus:outline-none
-                focus:text-red-600
-                hover:text-red-600
-                focus:font-bold
-                hover:font-bold"
+          className="focus:text-red-600 hover:text-red-600 focus:font-bold hover:font-bold"
           onClick={handleClickDelete}
         >
           x

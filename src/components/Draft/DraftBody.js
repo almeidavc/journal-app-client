@@ -4,7 +4,7 @@ const DraftBody = forwardRef((props, ref) => {
   return (
     <textarea
       ref={ref}
-      className="my-2 grow focus:outline-none"
+      className="my-2 grow"
       value={props.body}
       onChange={(e) => props.onBodyChange(e.target.value)}
     ></textarea>
