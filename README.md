@@ -2,7 +2,7 @@
 
 Journaling tool to save your notes/prompts and manage them separately.
 
-[Server Repo](github.com/almeidavc/journal-app-server)
+[Server Repo](https://github.com/almeidavc/journal-app-server)
 
 <!-- Overview + Technologies used -->
 
