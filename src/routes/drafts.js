@@ -19,7 +19,7 @@ function Drafts() {
   };
 
   const handleDraftDelete = (draftId) => {
-    setDrafts(drafts.filter((draft) => draft.id != draftId));
+    setDrafts(drafts.filter((draft) => draft.id !== draftId));
   };
 
   return (

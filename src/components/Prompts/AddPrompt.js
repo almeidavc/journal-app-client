@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useRef, useEffect } from "react";
 
 const AddPrompt = (props) => {
   const { onPromptAdd } = props;
@@ -18,6 +18,11 @@ const AddPrompt = (props) => {
   const Modal = (props) => {
     const { allPrompts } = props;
     const [input, setInput] = useState("");
+    const inputEl = useRef(null);
+
+    useEffect(() => {
+      inputEl.current.focus();
+    }, []);
 
     const handleClickOutside = (e) => {
       e.preventDefault();
@@ -66,6 +71,7 @@ const AddPrompt = (props) => {
           <form className="p-4 flex flex-col justify-between gap-y-3">
             <label htmlFor="prompt">New Prompt</label>
             <input
+              ref={inputEl}
               id="prompt"
               type="text"
               placeholder="write your prompt here..."
